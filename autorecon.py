@@ -111,7 +111,24 @@ SCANS = {
         "cmd": ["nmap", "-sV", "-T4", "--open", "{target}"],
         "output_suffix": "quick"
     },
-
-
-
+    "aggressive": {
+        "name": "Aggressive Scan",
+        "desc": "Full aggressive scan: OS, version, scripts, traceroute",
+        "cmd": ["nmap", "-A", "-T4", "--open", "{target}"],
+        "output_suffix": "aggressive"
+    },
+    "stealth": {
+        "name": "Stealth SYN Scan",
+        "desc": "Low-noise SYN scan (requires root/sudo)",
+        "cmd": ["nmap", "-sS", "-T2", "--open", "-p-", "{target}"],
+        "output_suffix": "stealth"
+    },
+    "firewall": {
+        "name": "Firewall / IDS Evasion Test",
+        "desc": "Tests basic firewall evasion techniques",
+        "cmd": ["nmap", "-f", "--mtu", "24", "-D", "RND:5", "--data-length", "200", "{target}"],
+        "output_suffix": "firewall"
+    },
 }
+
+ALL_SCAN_KEYS = list(SCANS.keys())
