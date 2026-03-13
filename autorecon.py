@@ -55,4 +55,12 @@ SCANS = {
         "output_suffix": "os"
     },
 
+    "vuln": {
+        "name": "Vulnerability Scan",
+        "desc": "Runs NSE vulnerability scripts (CVEs, common misconfigs)",
+        "cmd": ["nmap", "--script", "vuln", "-T4", "{target}"],
+        "output_suffix": "vulns"
+    },
+
+
 }
