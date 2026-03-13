@@ -93,6 +93,24 @@ SCANS = {
         "cmd": ["nmap", "--script", "ftp-anon,ftp-bounce,ftp-syst", "-p", "21", "{target}"],
         "output_suffix": "ftp"
     },
+    "dns": {
+        "name": "DNS Enumeration",
+        "desc": "Enumerates DNS records and zone transfers",
+        "cmd": ["nmap", "--script", "dns-zone-transfer,dns-brute,dns-recursion", "-p", "53", "{target}"],
+        "output_suffix": "dns"
+    },
+    "ssh": {
+        "name": "SSH Audit",
+        "desc": "Checks SSH version and supported auth methods",
+        "cmd": ["nmap", "--script", "ssh-auth-methods,ssh2-enum-algos", "-p", "22", "{target}"],
+        "output_suffix": "ssh"
+    },
+    "quick": {
+        "name": "Quick Scan (Default)",
+        "desc": "Fast scan of top 1000 ports with service detection",
+        "cmd": ["nmap", "-sV", "-T4", "--open", "{target}"],
+        "output_suffix": "quick"
+    },
 
 
 
