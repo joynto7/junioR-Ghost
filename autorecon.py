@@ -67,6 +67,12 @@ SCANS = {
         "cmd": ["nmap", "--script", "banner", "-p-", "--open", "{target}"],
         "output_suffix": "banners"
     },
+        "udp": {
+        "name": "Top 100 UDP Scan",
+        "desc": "Scans top 100 UDP ports (requires root/sudo)",
+        "cmd": ["nmap", "-sU", "--top-ports", "100", "-T4", "{target}"],
+        "output_suffix": "udp"
+    },
 
 
 }
