@@ -61,6 +61,12 @@ SCANS = {
         "cmd": ["nmap", "--script", "vuln", "-T4", "{target}"],
         "output_suffix": "vulns"
     },
+       "banner": {
+        "name": "Banner Grabbing",
+        "desc": "Grabs banners from open ports",
+        "cmd": ["nmap", "--script", "banner", "-p-", "--open", "{target}"],
+        "output_suffix": "banners"
+    },
 
 
 }
