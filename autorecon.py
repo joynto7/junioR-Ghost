@@ -87,6 +87,13 @@ SCANS = {
                 "-p", "139,445", "{target}"],
         "output_suffix": "smb"
     },
+    "ftp": {
+        "name": "FTP Enumeration",
+        "desc": "Checks FTP anonymous login and version",
+        "cmd": ["nmap", "--script", "ftp-anon,ftp-bounce,ftp-syst", "-p", "21", "{target}"],
+        "output_suffix": "ftp"
+    },
+
 
 
 }
