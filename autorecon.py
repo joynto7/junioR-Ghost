@@ -80,6 +80,13 @@ SCANS = {
                 "-p", "80,443,8080,8443,8888", "{target}"],
         "output_suffix": "http"
     },
+     "smb": {
+        "name": "SMB Enumeration",
+        "desc": "Enumerates SMB shares, signing, OS info (Windows targets)",
+        "cmd": ["nmap", "--script", "smb-enum-shares,smb-enum-users,smb-os-discovery,smb-security-mode",
+                "-p", "139,445", "{target}"],
+        "output_suffix": "smb"
+    },
 
 
 }
