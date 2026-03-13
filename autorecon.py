@@ -73,6 +73,13 @@ SCANS = {
         "cmd": ["nmap", "-sU", "--top-ports", "100", "-T4", "{target}"],
         "output_suffix": "udp"
     },
+    "http": {
+        "name": "HTTP Enumeration",
+        "desc": "Enumerates HTTP/HTTPS services (titles, headers, methods)",
+        "cmd": ["nmap", "--script", "http-title,http-headers,http-methods,http-robots.txt,http-auth-finder",
+                "-p", "80,443,8080,8443,8888", "{target}"],
+        "output_suffix": "http"
+    },
 
 
 }
