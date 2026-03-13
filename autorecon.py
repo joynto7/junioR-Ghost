@@ -33,3 +33,26 @@ class C:
   ╚═╝░░╚═╝░╚═════╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝░╚════╝░░╚════╝░╚═╝░░╚══╝
 {C.RESET}{C.DIM}  Universal Nmap Recon Script | by Ghost{C.RESET}
 """
+SCANS = {
+
+    "port": {
+            "name": "Full Port Scan",
+            "desc": "Scans all 65535 TCP prots",
+            "cmd": ["nmap", "-p-", "--open", "-T4", "--min-rate=1000", "{target}"],
+            "output_suffix": "ports"
+        },
+    "service": {
+        "name": "Service and Version Detection",
+        "desc": "Finding  the services and versions of common ports",
+        "cmd": ["nmap","-sV","-sC","-p","21,22,23,25,53,80,110,143,443,445,3306,3389,8080,8443","{target}"],
+        "output_suffix": "services"
+    },
+
+    "os":{
+        "name": " OS Detection",
+        "desc": " Identify which os runing ",
+        "cmd": ["nmap", "-O", "--osscan-guess", "{target}"],
+        "output_suffix": "os"
+    },
+
+}
