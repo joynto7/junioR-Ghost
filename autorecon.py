@@ -192,7 +192,15 @@ def run_scan(target:str, scan_key: str, output_dir: Path, save_output:bool) -> d
         print(f"\n{C.DIM}{'─'*70}{C.RESET}")
         print(output.strip())
         print(f"{C.DIM}{'─'*70}{C.RESET}\n")
-        
+
+        if save_output:
+            out_file = output_dir / f"{target.replace('.','_')}_{info['output_suffix']}.txt"
+            out_file.write_text(
+                f"Scan: {info['name']}\nTarget:{target}\nTime: {result['timestamp']}\n"
+                f"Command: {result['command']}\n\n{'='*60}\n\n{output}"
+            )
+            log(f"Saved -> {out_file}","OK")
+
     
         
 
