@@ -206,7 +206,12 @@ def run_scan(target:str, scan_key: str, output_dir: Path, save_output:bool) -> d
     except PermissionError:
         log(f"Scan '{scan_key}' requires root/sudo privileges.", "ERR")
         result["status"] = "permission_denied"    
+    except Exception as e:
+        log(f"Scan '{scan_key}' failed: {e}", "ERR")
+        result["status"] = "error"
+        result["error"] = str(e)
 
+    return result
 
     
         
