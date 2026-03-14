@@ -143,3 +143,13 @@ def log(msg, level ="INFO"):
         "SECTION":f"{C.BLUE}[>]{C.RESET}",
     }.get(level,"[?]")
     print(f"{C.DIM}{ts}{C.RESET}{prefix}{msg}")
+    
+def check_map():
+    try:
+        subprocess.run["namp","--version"], capture_output=True, check=True)
+        return True 
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return False
+def is_root():
+    return os.geteuid() == 0
+       
