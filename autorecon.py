@@ -203,7 +203,10 @@ def run_scan(target:str, scan_key: str, output_dir: Path, save_output:bool) -> d
     except subprocess.TimeoutExpired:
         log(f"Scan '{scan_key}' timed out after 5 minutes.", " WARN")
         result["status"] = "timeout"
-                
+    except PermissionError:
+        log(f"Scan '{scan_key}' requires root/sudo privileges.", "ERR")
+        result["status"] = "permission_denied"    
+
 
     
         
