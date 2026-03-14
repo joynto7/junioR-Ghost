@@ -132,3 +132,14 @@ SCANS = {
 }
 
 ALL_SCAN_KEYS = list(SCANS.keys())
+
+def log(msg, level ="INFO"):
+    ts = datetime.datetime.now().strftime("%H:%M:%S")
+    prefix = {
+        "INFO":  f"{C.CYAN}[*]{C.RESET}",
+        "OK":    f"{C.GREEN}[+]{C.RESET}",
+        "WARN":  f"{C.YELLOW}[!]{C.RESET}",
+        "ERR":   f"{C.RED}[-]{C.RESET}",
+        "SECTION":f"{C.BLUE}[>]{C.RESET}",
+    }.get(level,"[?]")
+    print(f"{C.DIM}{ts}{C.RESET}{prefix}{msg}")
