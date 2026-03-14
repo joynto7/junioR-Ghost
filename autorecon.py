@@ -150,6 +150,16 @@ def check_map():
         return True 
     except (subprocess.CalledProcessError, FileNotFoundError):
         return False
+    
 def is_root():
     return os.geteuid() == 0
+
+def print_scan_menu():
+    print(f"\n{C.BOLD}Acvailable Scan Modules:{C.RESET}")
+    print(f" {'KEY':<12} {'NAME':<30} DESCRIPTION")
+    print(f"  {'-'*12} {'-'*30} {'-'*40}")
+    for key, info in SCANS.items():
+        print(f"  {C.CYAN}{key:<12}{C.RESET} {info['name']:<30} {C.DIM}{info['desc']}{C.RESET}")
+    print()    
+
        
