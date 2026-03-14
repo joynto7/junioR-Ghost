@@ -177,6 +177,23 @@ def run_scan(target:str, scan_key: str, output_dir: Path, save_output:bool) -> d
         "timestamp": datetime.datetime.now().isoformat(),
         "output": "",
         "status": "ok"
-    }    
+    }
+    try:
+        proc = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=300
+        )
+        output = proc.stdout + proc.stderr
+        result["output"] = output
+        result["returncode"] = proc.returncode
+
+        print(f"\n{C.DIM}{'─'*70}{C.RESET}")
+        print(output.strip())
+        print(f"{C.DIM}{'─'*70}{C.RESET}\n")
+        
+    
+        
 
        
