@@ -160,6 +160,23 @@ def print_scan_menu():
     print(f"  {'-'*12} {'-'*30} {'-'*40}")
     for key, info in SCANS.items():
         print(f"  {C.CYAN}{key:<12}{C.RESET} {info['name']:<30} {C.DIM}{info['desc']}{C.RESET}")
-    print()    
+    print()   
+
+def run_scan(target:str, scan_key: str, output_dir: Path, save_output:bool) -> dict:
+    info = SCANS[scan_key]   
+    cmd = [c.replace("{target}",target) for c in info["cmd"]]
+
+    log(f"Starting: {C.BOLD}{info['name']}{C.RESET} ({info['desc']}", "SECTION")
+    log(f"Command: {C.DIM}{' '.join(cmd)}{C.RESET}")
+
+    result = {
+        "scan": scan_key,   
+        "name": info["name"],
+        "target": target,
+        "command": " ".join(cmd),
+        "timestamp": datetime.datetime.now().isoformat(),
+        "output": "",
+        "status": "ok"
+    }    
 
        
