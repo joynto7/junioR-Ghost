@@ -221,6 +221,12 @@ def print_summery( results:list, output_dir: Path,save:bool)
     ok = [ r for r in results if r ["status"] == "ok"]
     failed = [r for r in results if r["status"] != "ok"]
 
+    for r in results:
+        icon = f"{C.GREEN}✓{C.RESET}" if r["status"] == "ok" else f"{C.RED}✗{C.RESET}"
+        status_color = C.GREEN if r["status"] == "ok" else C.RED
+        print(f"  {icon} {r['name']:<35} {status_color}{r['status']}{C.RESET}")
+
+
     
         
 
