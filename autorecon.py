@@ -226,6 +226,24 @@ def print_summery( results:list, output_dir: Path,save:bool)
         status_color = C.GREEN if r["status"] == "ok" else C.RED
         print(f"  {icon} {r['name']:<35} {status_color}{r['status']}{C.RESET}")
 
+    print(f"\n  Total: {len(results)} | {C.GREEN}OK: {len(ok)}{C.RESET} | {C.RED}Failed: {len(failed)}{C.RESET}")
+
+    if save:
+        summary_path = output_dir / "summary.json"
+        with open(summary_path, "w") as f:
+            json.dump(results, f, indent=2)
+        log(f"Full summary saved → {summary_path}", "OK")
+
+    print(f"\n  Total: {len(results)} | {C.GREEN}OK: {len(ok)}{C.RESET} | {C.RED}Failed: {len(failed)}{C.RESET}")
+
+    if save:
+        summary_path = output_dir / "summary.json"
+        with open(summary_path, "w") as f:
+            json.dump(results, f, indent=2)
+        log(f"Full summary saved → {summary_path}", "OK")
+
+    print(f"{C.BOLD}{C.BLUE}{'═'*60}{C.RESET}\n")
+
 
     
         
