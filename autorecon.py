@@ -211,7 +211,15 @@ def run_scan(target:str, scan_key: str, output_dir: Path, save_output:bool) -> d
         result["status"] = "error"
         result["error"] = str(e)
 
-    return result
+    return result 
+
+def print_summery( results:list, output_dir: Path,save:bool)
+    print(f"\n{C.BOLD}{C.BLUE}{'='*60}{C.RESET}")
+    print(f"{C.BOLD} RECON SUMMARY{C.RESET}")
+    print(f"{C.BOLD}{C.BLUE}{'='*60}{C.RESET}")
+
+    ok = [ r for r in results if r ["status"] == "ok"]
+    failed = [r for r in results if r["status"] != "ok"]
 
     
         
