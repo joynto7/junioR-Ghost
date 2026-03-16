@@ -252,7 +252,12 @@ def main():
      parser.add_argument("-t", "--target",  required=True,  help="Target IP address or hostname")
      parser.add_argument("-o", "--output",  default="recon_output", help="Output directory (default: recon_output/)")
      parser.add_argument("--scans", nargs="+", metavar="SCAN",help=f"Scan modules to run. Choices: {', '.join(ALL_SCAN_KEYS)}")
- 
+     parser.add_argument("--all",           action="store_true", help="Run ALL scan modules")
+     parser.add_argument("--list",          action="store_true", help="List all available scan modules and exit")
+     parser.add_argument("--no-save",       action="store_true", help="Don't save output to files") 
+
+     args = parser.parse_args()
+  
     
         
 
