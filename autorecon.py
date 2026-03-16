@@ -244,6 +244,11 @@ def print_summery( results:list, output_dir: Path,save:bool)
 
     print(f"{C.BOLD}{C.BLUE}{'═'*60}{C.RESET}\n")
 
+def main():
+     parser = argparse.ArgumentParser(
+        description="AutoRecon — Universal Nmap Recon Script",
+        formatter_class=argparse.RawTextHelpFormatter
+    )
 
     
         
