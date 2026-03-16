@@ -285,8 +285,16 @@ def main():
      if save:
         output_dir.mkdir(parents=True, exist_ok=True)
         log(f"Output directory: {output_dir.resolve()}", "OK")
-
-     
+        
+        log(f"Target: {C.BOLD}{args.target}{C.RESET}", "OK")
+        log(f"Scans to run ({len(selected)}): {C.CYAN}{', '.join(selected)}{C.RESET}", "OK")
+        print()
+   
+        results = []
+        for i, scan_key in enumerate(selected, 1):
+         log(f"[{i}/{len(selected)}] Running → {scan_key}", "INFO")
+         result = run_scan(args.target, scan_key, output_dir, save)
+         results.append(result)
 
         
 
