@@ -257,8 +257,29 @@ def main():
      parser.add_argument("--no-save",       action="store_true", help="Don't save output to files") 
 
      args = parser.parse_args()
-  
+
+     if args.list:
+      print_scan_menu()
+      sys.exit(0)
+
+      if not check_map():
+          log("nmap not found ! Install it: sudo apt install namp","ERR")
+          sys.exit(1)
+
+     log(f"nmap found. Root: {'Yes' if is_root() else 'No (some scans may fail)'}", "OK")  
     
+     if args.all:
+      selected = ALL_SCAN_KEYS
+     elif args.scans:
+        invalid = [s for s in args.scans if s not in SCANS]
+        if invalid:
+            log(f"Unknown scan(s): {invalid}. Use --list to see options.", "ERR")
+            sys.exit(1)
+        selected = args.scans
+     else:
+        log("No scans specified. Running default: quick + service + http", "WARN")
+        selected = ["quick", "service", "http"]
+
         
 
        
