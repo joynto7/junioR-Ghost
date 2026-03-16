@@ -280,6 +280,14 @@ def main():
         log("No scans specified. Running default: quick + service + http", "WARN")
         selected = ["quick", "service", "http"]
 
+     save = not args.no_save
+     output_dir = Path(args.output)
+     if save:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        log(f"Output directory: {output_dir.resolve()}", "OK")
+
+     
+
         
 
        
