@@ -249,7 +249,10 @@ def main():
         description="AutoRecon — Universal Nmap Recon Script",
         formatter_class=argparse.RawTextHelpFormatter
     )
-
+     parser.add_argument("-t", "--target",  required=True,  help="Target IP address or hostname")
+     parser.add_argument("-o", "--output",  default="recon_output", help="Output directory (default: recon_output/)")
+     parser.add_argument("--scans", nargs="+", metavar="SCAN",help=f"Scan modules to run. Choices: {', '.join(ALL_SCAN_KEYS)}")
+ 
     
         
 
